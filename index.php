@@ -6,10 +6,15 @@ require 'function.php';
 
 require 'Database.php';
 
-// connect to our MySQL database
-$db = new Database();
 
-$posts = $db->query("select * from posts")->fetchAll(PDO::FETCH_ASSOC);
+$config = require 'config.php';
+
+// dd($config['database']);
+
+// connect to our MySQL database
+$db = new Database($config['database'], $config['dbuser'], $config['dbpassword']);
+
+$posts = $db->query("select * from posts")->fetchAll();
 
 foreach($posts as $post) {
     echo "<li>".$post['title']."</li>";
