@@ -14,7 +14,13 @@ $config = require 'config.php';
 // connect to our MySQL database
 $db = new Database($config['database'], $config['dbuser'], $config['dbpassword']);
 
-$posts = $db->query("select * from posts")->fetchAll();
+$id = $_GET['id'];
+
+// $query = "select * from posts where id= {$id}"; // do not insert inline variable input into sql query directly
+// $query = "select * from posts where id= ?"; // first way
+$query = "select * from posts where id= :id"; // second way
+
+$posts = $db->query($query, [':id' => $id])->fetchAll();
 
 foreach($posts as $post) {
     echo "<li>".$post['title']."</li>";
