@@ -1,10 +1,20 @@
 <?php
 
 $config = require 'config.php';
-// connect to our MySQL database
+
 $db = new Database($config['database'], $config['dbuser'], $config['dbpassword']);
-$heading = "Note";
+
+$heading       = "Note";
+$currentUserId = 1;
 
 $note = $db->query('select * from notes where id = :id', ['id' => $_GET['id']])->fetch();
+
+if (!$note) {
+    abort();
+}
+
+if ($note['user_id'] != $currentUserId) {
+    abort(Response::FORRIDDEN);
+}
 
 require "views/note.view.php";
