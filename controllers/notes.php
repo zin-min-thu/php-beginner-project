@@ -5,7 +5,7 @@ $config = require 'config.php';
 $db = new Database($config['database'], $config['dbuser'], $config['dbpassword']);
 $heading = "My Notes";
 
-$notes = $db->query('select * from notes where user_id = 1')->fetchAll();
+$notes = $db->query('select * from notes where user_id = 1')->get();
 
 // dd($notes);
 
