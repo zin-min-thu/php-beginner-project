@@ -8,5 +8,5 @@ return [
         'charset' => 'utf8mb4',
     ],
     'dbuser'   => 'root',
-    'dbpassword' => '',
+    'dbpassword' => 'zmt@2024',
 ];
