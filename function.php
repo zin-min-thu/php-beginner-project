@@ -17,3 +17,15 @@ function authorize($condition, $status = Response::FORRIDDEN) {
         abort($status);
     }
 }
+
+function base_path($path)
+{
+    return BASE_PATH . $path;
+}
+
+function view($path, $attributes = [])
+{
+    extract($attributes); # will extract key, value vairable than can direct use in view
+
+    require base_path('views/'. $path);
+}

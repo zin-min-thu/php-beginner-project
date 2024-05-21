@@ -1,12 +1,13 @@
 <?php
 
-$config = require 'config.php';
+$config = require base_path('config.php');
 // connect to our MySQL database
 $db = new Database($config['database'], $config['dbuser'], $config['dbpassword']);
 $heading = "My Notes";
 
 $notes = $db->query('select * from notes where user_id = 1')->get();
 
-// dd($notes);
-
-require "views/notes/index.view.php";
+view("notes/index.view.php", [
+    'heading' => $heading,
+    'notes' => $notes
+]);
