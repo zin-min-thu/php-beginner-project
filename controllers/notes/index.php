@@ -1,5 +1,7 @@
 <?php
 
+use Core\Database;
+
 $config = require base_path('config.php');
 // connect to our MySQL database
 $db = new Database($config['database'], $config['dbuser'], $config['dbpassword']);
