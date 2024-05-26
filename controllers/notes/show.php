@@ -6,7 +6,7 @@ $config = require base_path('config.php');
 
 $db = new Database($config['database'], $config['dbuser'], $config['dbpassword']);
 
-$currentUserId = 1;
+$currentUserId = 11;
 
 $note = $db->query('select * from notes where id = :id', ['id' => $_GET['id']])->findOrFail();
 
