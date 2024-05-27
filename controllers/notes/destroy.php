@@ -12,7 +12,16 @@ $note = $db->query('select * from notes where id = :id', ['id' => $_GET['id']])-
 
 authorize($note['user_id'] == $currentUserId);
 
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $db->query('delete from notes where id = :id', [
+        'id' => $_POST['id'],
+    ]);
+
+    header('location: /notes');
+    exit();
+}
+
 view("notes/show.view.php", [
     'heading' => 'Note',
-    'note' => $note
+    'note'    => $note,
 ]);
