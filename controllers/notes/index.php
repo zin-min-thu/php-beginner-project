@@ -1,10 +1,10 @@
 <?php
 
+use Core\App;
 use Core\Database;
 
-$config = require base_path('config.php');
-// connect to our MySQL database
-$db = new Database($config['database'], $config['dbuser'], $config['dbpassword']);
+$db = App::resolve(Database::class);
+
 $heading = "My Notes";
 
 $notes = $db->query('select * from notes where user_id = 1')->get();
