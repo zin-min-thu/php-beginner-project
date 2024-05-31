@@ -8,7 +8,7 @@ class Validator
     {
         $value = trim($value);
 
-        return strlen($value) >= 1 && strlen($max) <= $max;
+        return strlen($value) >= 1 && strlen($value) <= $max;
     }
 
     public static function email($value)
