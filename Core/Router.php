@@ -35,6 +35,8 @@ class Router
             'controller' => $controller,
             'method'     => 'POST',
         ];
+
+        return $this;
     }
 
     public function delete($uri, $controller)
