@@ -2,8 +2,6 @@
 
 namespace Core;
 
-use Core\Middleware\Auth;
-use Core\Middleware\Guest;
 use Core\Middleware\Middleware;
 
 class Router
@@ -83,7 +81,7 @@ class Router
                 //     (new Auth)->handle();
                 // }
 
-                return require base_path($route['controller']);
+                return require base_path('Http/controllers/' . $route['controller']);
             }
         }
 
