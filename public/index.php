@@ -1,13 +1,13 @@
 <?php
 
+use Core\Session;
+
 session_start();
 
 ini_set('display_errors', 1);
 error_reporting(-1);
 
 const BASE_PATH = __DIR__ . '/../';
-
-// var_dump(BASE_PATH);die;
 
 require BASE_PATH . 'Core/function.php';
 
@@ -31,3 +31,5 @@ $uri = parse_url($_SERVER['REQUEST_URI'])['path'];
 $method = $_POST['_method'] ?? $_SERVER['REQUEST_METHOD'];
 
 $router->route($uri, $method);
+
+Session::unflash();

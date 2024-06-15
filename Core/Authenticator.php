@@ -25,21 +25,15 @@ class Authenticator
 
     public function login($user)
     {
-        $_SESSION['user'] = [
+        Session::put('user', [
             'email' => $user['email'],
-        ];
+        ]);
 
         session_regenerate_id(true);
     }
 
     public function logout()
     {
-        $_SESSION = [];
-
-        session_destroy();
-
-        $parans = session_get_cookie_params();
-
-        setcookie('PHPSESSID', '', time() - 3600, $parans['path'], $parans['domain'], $parans['secure'], $parans['httponly']);
+        Session::destroy();
     }
 }
