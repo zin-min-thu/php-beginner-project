@@ -96,6 +96,11 @@ class Router
 
         die;
     }
+
+    public function previousUrl()
+    {
+        return $_SERVER['HTTP_REFERER'];
+    }
 }
 
 // $routes = require base_path('routes.php');
