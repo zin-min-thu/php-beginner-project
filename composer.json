@@ -1,0 +1,16 @@
+{
+    "name": "visibleone/demo",
+    "authors": [
+        {
+            "name": "KoZin",
+            "email": "zinminthu.dev@gmail.com"
+        }
+    ],
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "Core\\": "Core/",
+            "Http\\": "Http"
+        }
+    }
+}
